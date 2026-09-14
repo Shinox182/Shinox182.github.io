@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zizuDev — Desarrollador Móvil</title>
+<meta name="description" content="Desarrollador móvil especializado en Android (Kotlin) e iOS (Swift). Portafolio, proyectos y contacto.">
+<meta name="author" content="zizuDev">
+<meta property="og:title" content="zizuDev — Desarrollador Móvil">
+<meta property="og:description" content="Desarrollador móvil especializado en Android e iOS.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+<style>
+  :root{
+    --bg:#ffffff; --bg-alt:#f6f7f9; --surface:#ffffff;
+    --text:#15181d; --muted:#5b6472; --border:#e3e6ea;
+    --accent:#2f6bff; --accent-soft:#eaf0ff;
+    --radius:14px; --max:1080px;
+    --shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06);
+  }
+  [data-theme="dark"]{
+    --bg:#0e1116; --bg-alt:#141920; --surface:#151a22;
+    --text:#e8ecf2; --muted:#9aa5b4; --border:#242c38;
+    --accent:#6f9bff; --accent-soft:#182236;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0e1116; --bg-alt:#141920; --surface:#151a22;
+      --text:#e8ecf2; --muted:#9aa5b4; --border:#242c38;
+      --accent:#6f9bff; --accent-soft:#182236;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.02em}
+  h1{font-size:clamp(2rem,5vw,3.2rem)}
+  h2{font-size:clamp(1.4rem,3vw,2rem)}
+  h3{font-size:1.1rem}
+  p{margin:0 0 1rem}
+  .wrap{max-width:var(--max);margin-inline:auto;padding-inline:20px}
+  section{padding-block:clamp(48px,8vw,88px)}
+  .alt{background:var(--bg-alt)}
+  .eyebrow{
+    font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;
+    font-weight:600;color:var(--accent);margin-bottom:.6rem
+  }
+  .lead{font-size:1.08rem;color:var(--muted);max-width:62ch}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+  .brand{font-weight:700;letter-spacing:-.02em;color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:.93rem;font-weight:500}
+  .nav-links a:hover{color:var(--text);text-decoration:none}
+  .icon-btn{
+    background:transparent;border:1px solid var(--border);color:var(--text);
+    width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:15px;
+    display:grid;place-items:center;flex:none
+  }
+  .icon-btn:hover{background:var(--bg-alt)}
+  @media (max-width:720px){ .nav-links a:not(.cta){display:none} }
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center}
+  @media (max-width:820px){ .hero{grid-template-columns:1fr;gap:32px} }
+  .avatar{
+    width:180px;height:180px;border-radius:24px;margin-inline:auto;
+    background:linear-gradient(135deg,var(--accent),#8b5cf6);
+    display:grid;place-items:center;color:#fff;font-size:3.4rem;font-weight:700;
+    box-shadow:var(--shadow)
+  }
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;
+    font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{text-decoration:none;opacity:.9}
+  .btn-ghost{border-color:var(--border);color:var(--text);background:var(--surface)}
+  .btn-ghost:hover{text-decoration:none;background:var(--bg-alt)}
+
+  /* Grids */
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:820px){ .g3{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .g3,.g2{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;box-shadow:var(--shadow)
+  }
+  .card h3{margin-bottom:.35em}
+  .card p{color:var(--muted);font-size:.94rem;margin-bottom:0}
+  .card-ico{
+    width:40px;height:40px;border-radius:10px;background:var(--accent-soft);
+    display:grid;place-items:center;font-size:1.2rem;margin-bottom:14px
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .tag{
+    font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;
+    background:var(--accent-soft);color:var(--accent)
+  }
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  @media (max-width:640px){ .stats{grid-template-columns:repeat(2,1fr)} }
+  .stat strong{display:block;font-size:1.9rem;letter-spacing:-.03em}
+  .stat span{font-size:.85rem;color:var(--muted)}
+
+  /* Timeline */
+  .tl{border-left:2px solid var(--border);padding-left:26px;margin-left:6px}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-33px;top:7px;width:12px;height:12px;
+    border-radius:50%;background:var(--accent);border:3px solid var(--bg)
+  }
+  .tl-date{font-size:.82rem;color:var(--muted);font-weight:600}
+  .tl-item h3{margin:.2em 0 .1em}
+  .tl-role{color:var(--accent);font-size:.92rem;font-weight:600;margin-bottom:.5em}
+
+  /* Contact */
+  .contact{text-align:center}
+  .contact .lead{margin-inline:auto}
+  .social{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+  footer{border-top:1px solid var(--border);padding-block:28px;color:var(--muted);font-size:.88rem}
+  .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="brand">zD<span style="color:var(--accent)">.</span></a>
+    <nav class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#contacto" class="cta">Contacto</a>
+      <button class="icon-btn" id="theme" aria-label="Cambiar tema">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">Desarrollador Móvil</p>
+        <h1>Hola, soy zizuDev</h1>
+        <p class="lead">
+          Construyo aplicaciones móviles nativas para Android e iOS: rápidas, accesibles
+          y pensadas para escalar. Más de 5 años transformando ideas en productos
+          publicados en App Store y Google Play.
+        </p>
+        <div class="btns">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contacto" class="btn btn-ghost">Contactar</a>
+        </div>
+      </div>
+      <div class="avatar" aria-hidden="true">zD</div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Sobre mí</p>
+      <h2>Aplicaciones nativas, de la idea a la tienda</h2>
+      <p class="lead" style="margin-bottom:36px">
+        Especializado en Kotlin/Jetpack Compose y Swift/SwiftUI. Trabajo con arquitecturas
+        limpias (MVVM, MVI), integración continua y pruebas automatizadas, cuidando el
+        rendimiento y la experiencia de usuario en cada pantalla.
+      </p>
+      <div class="stats">
+        <div class="stat"><strong>5+</strong><span>Años de experiencia</span></div>
+        <div class="stat"><strong>24</strong><span>Apps publicadas</span></div>
+        <div class="stat"><strong>1.2M</strong><span>Descargas acumuladas</span></div>
+        <div class="stat"><strong>4.7★</strong><span>Valoración promedio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS / STACK -->
+  <section id="servicios">
+    <div class="wrap">
+      <p class="eyebrow">Servicios</p>
+      <h2>En qué puedo ayudarte</h2>
+      <div class="grid g3" style="margin-top:32px">
+        <article class="card">
+          <div class="card-ico">🤖</div>
+          <h3>Desarrollo Android</h3>
+          <p>Kotlin, Jetpack Compose, Coroutines, Room, Hilt. Publicación y mantenimiento en Google Play.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico">🍎</div>
+          <h3>Desarrollo iOS</h3>
+          <p>Swift, SwiftUI, Combine, Core Data. Distribución vía TestFlight y App Store Connect.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico">⚡</div>
+          <h3>Multiplataforma</h3>
+          <p>Kotlin Multiplatform y React Native para compartir lógica sin sacrificar la experiencia nativa.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico">🔌</div>
+          <h3>Integración de APIs</h3>
+          <p>REST y GraphQL, autenticación OAuth2, notificaciones push, pagos y sincronización offline.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico">🧪</div>
+          <h3>Calidad y CI/CD</h3>
+          <p>Pruebas unitarias e instrumentadas, análisis estático y pipelines con GitHub Actions o Bitrise.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico">📈</div>
+          <h3>Optimización</h3>
+          <p>Reducción de tiempos de arranque, consumo de batería, tamaño del binario y monitoreo de crashes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Portafolio</p>
+      <h2>Proyectos destacados</h2>
+      <div class="grid g3" style="margin-top:32px">
+        <article class="card">
+          <h3>FinTrack</h3>
+          <p>App de finanzas personales con sincronización bancaria, widgets y modo offline. 300K+ descargas.</p>
+          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Compose</span><span class="tag">Room</span></div>
+          <p style="margin-top:16px"><a href="#">Ver caso de estudio →</a></p>
+        </article>
+        <article class="card">
+          <h3>RutaSegura</h3>
+          <p>Navegación en tiempo real con geocercas, rutas optimizadas y seguimiento de flota para logística.</p>
+          <div class="tags"><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">MapKit</span></div>
+          <p style="margin-top:16px"><a href="#">Ver caso de estudio →</a></p>
+        </article>
+        <article class="card">
+          <h3>HealthPulse</h3>
+          <p>Monitoreo de salud conectado a wearables, con gráficos históricos y alertas configurables.</p>
+          <div class="tags"><span class="tag">KMP</span><span class="tag">Ktor</span><span class="tag">HealthKit</span></div>
+          <p style="margin-top:16px"><a href="#">Ver caso de estudio →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="wrap">
+      <p class="eyebrow">Trayectoria</p>
+      <h2>Experiencia profesional</h2>
+      <div class="tl" style="margin-top:32px">
+        <div class="tl-item">
+          <div class="tl-date">2023 — Actualidad</div>
+          <h3>Empresa Ejemplo S.A.</h3>
+          <div class="tl-role">Senior Mobile Developer</div>
+          <p class="lead" style="font-size:.95rem">
+            Lidero el desarrollo de la app principal (Android e iOS), definiendo arquitectura,
+            estándares de código y procesos de entrega continua.
+          </p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2021 — 2023</div>
+          <h3>Startup Ejemplo SpA</h3>
+          <div class="tl-role">Android Developer</div>
+          <p class="lead" style="font-size:.95rem">
+            Migración completa a Jetpack Compose y reducción del 40% en el tiempo de arranque
+            de la aplicación.
+          </p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2019 — 2021</div>
+          <h3>Agencia Digital Ejemplo</h3>
+          <div class="tl-role">Desarrollador Móvil Junior</div>
+          <p class="lead" style="font-size:.95rem">
+            Desarrollo de aplicaciones a medida para clientes de retail, educación y salud.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="alt">
+    <div class="wrap contact">
+      <p class="eyebrow">Contacto</p>
+      <h2>¿Tienes un proyecto en mente?</h2>
+      <p class="lead">
+        Estoy disponible para proyectos freelance y colaboraciones a largo plazo.
+        Escríbeme y respondo dentro de 24 horas.
+      </p>
+      <div class="btns" style="justify-content:center">
+        <a href="mailto:jconcha.arev@gmail.com" class="btn btn-primary">jconcha.arev@gmail.com</a>
+      </div>
+      <div class="social">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Google Play</a>
+        <a href="#">App Store</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> zizuDev. Todos los derechos reservados.</span>
+    <span>Hecho con HTML, CSS y JavaScript.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Alternador de tema (en memoria, sin almacenamiento del navegador)
+  var root = document.documentElement;
+  document.getElementById('theme').addEventListener('click', function () {
+    var isDark = getComputedStyle(document.body).backgroundColor === 'rgb(14, 17, 22)';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  });
+</script>
+
+</body>
+</html>
