@@ -12,7 +12,7 @@
     { "slug": "libertadores", "title": "Libertadores", "format": "Imperio", "image": "https://api.myl.cl/static/libertadores.png" },
     { "slug": "onyria", "title": "Onyria", "format": "Imperio", "image": "https://api.myl.cl/static/onyria.png" },
     { "slug": "toolkit_cenizas_de_fuego", "title": "Cenizas de Fuego", "format": "Imperio" },
-    { "slug": "toolkit_hielo_inmort                                                                                                                                                      al", "title": "Hielo Inmortal", "format": "Imperio" },
+    { "slug": "toolkit_hielo_inmortal", "title": "Hielo Inmortal", "format": "Imperio" },
     { "slug": "lootbox_2024", "title": "Lootbox 2024", "format": "Imperio" },
     { "slug": "secretos_arcanos", "title": "Secretos Arcanos", "format": "Imperio" },
     { "slug": "bestiarium", "title": "Bestiarium", "format": "Imperio", "image": "https://api.myl.cl/static/bestiarium.png" },
